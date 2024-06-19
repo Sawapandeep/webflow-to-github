@@ -6,10 +6,10 @@ const path = require('path');
 const admin = require('firebase-admin');
 
 // Initialize Firebase Admin SDK
-const serviceAccount = fs.readFileSync(/etc/secrets/firebase-key.json);
+const serviceAccount = fs.readFileSync('/etc/secrets/firebase-key.json');
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+    credential: admin.credential.cert(JSON.parse(serviceAccount)),
 //   databaseURL: 'https://your-project-id.firebaseio.com'
 });
 
