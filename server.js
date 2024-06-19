@@ -21,7 +21,7 @@ const WEBFLOW_CLIENT_ID = process.env.WEBFLOW_CLIENT_ID;
 const WEBFLOW_CLIENT_SECRET = process.env.WEBFLOW_CLIENT_SECRET;
 const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
-const REDIRECT_URI = 'https://https://webflow-to-github.onrender.com/callback'; // Ensure this matches the registered redirect URI
+const REDIRECT_URI = 'https://webflow-to-github.onrender.com/callback'; // Ensure this matches the registered redirect URI
 
 // Step 1: Redirect user to Webflow for authorization
 app.get('/auth/webflow', (req, res) => {
