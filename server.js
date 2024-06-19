@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 //!for render application
 // app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
 
-const REDIRECT_URI = 'https://your-service.onrender.com/callback';
+const REDIRECT_URI = 'https://webflow-to-github.onrender.com/callback';
 const WEBFLOW_CLIENT_ID = fs.readFileSync('/etc/secrets/WEBFLOW_CLIENT_ID', 'utf8').trim();
 const WEBFLOW_CLIENT_SECRET = fs.readFileSync('/etc/secrets/WEBFLOW_CLIENT_SECRET', 'utf8').trim();
 const GITHUB_CLIENT_ID = fs.readFileSync('/etc/secrets/GITHUB_CLIENT_ID', 'utf8').trim();
@@ -123,7 +123,7 @@ app.post('/commit', async (req, res) => {
 app.listen(3000, () => {
     console.log('Server running on http://localhost:3000');
 });
-// const REDIRECT_URI = 'https://your-service.onrender.com/callback';
+// const REDIRECT_URI = 'https://webflow-to-github.onrender.com/callback';
 // const WEBFLOW_CLIENT_ID = fs.readFileSync('/etc/secrets/WEBFLOW_CLIENT_ID', 'utf8').trim();
 // const WEBFLOW_CLIENT_SECRET = fs.readFileSync('/etc/secrets/WEBFLOW_CLIENT_SECRET', 'utf8').trim();
 // const GITHUB_CLIENT_ID = fs.readFileSync('/etc/secrets/GITHUB_CLIENT_ID', 'utf8').trim();
