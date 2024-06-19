@@ -10,14 +10,22 @@ app.use(bodyParser.json());
 app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
 
 // Read secrets from file
-const secrets = JSON.parse(fs.readFileSync(path.join(__dirname, 'secrets.json'), 'utf8'));
+//!for non-render application
+// const secrets = JSON.parse(fs.readFileSync(path.join(__dirname, 'secrets.json'), 'utf8'));
+// const WEBFLOW_CLIENT_ID = secrets.WEBFLOW_CLIENT_ID;
+// const WEBFLOW_CLIENT_SECRET = secrets.WEBFLOW_CLIENT_SECRET;
+// const GITHUB_CLIENT_ID = secrets.GITHUB_CLIENT_ID;
+// const GITHUB_CLIENT_SECRET = secrets.GITHUB_CLIENT_SECRET;
 
-const WEBFLOW_CLIENT_ID = secrets.WEBFLOW_CLIENT_ID;
-const WEBFLOW_CLIENT_SECRET = secrets.WEBFLOW_CLIENT_SECRET;
-const GITHUB_CLIENT_ID = secrets.GITHUB_CLIENT_ID;
-const GITHUB_CLIENT_SECRET = secrets.GITHUB_CLIENT_SECRET;
+//!for render application
+app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
 
 const REDIRECT_URI = 'https://your-service.onrender.com/callback';
+const WEBFLOW_CLIENT_ID = fs.readFileSync('/etc/secrets/WEBFLOW_CLIENT_ID', 'utf8').trim();
+const WEBFLOW_CLIENT_SECRET = fs.readFileSync('/etc/secrets/WEBFLOW_CLIENT_SECRET', 'utf8').trim();
+const GITHUB_CLIENT_ID = fs.readFileSync('/etc/secrets/GITHUB_CLIENT_ID', 'utf8').trim();
+const GITHUB_CLIENT_SECRET = fs.readFileSync('/etc/secrets/GITHUB_CLIENT_SECRET', 'utf8').trim();
+
 
 // Step 1: Redirect user to Webflow for authorization
 app.get('/auth/webflow', (req, res) => {
