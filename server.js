@@ -1,16 +1,23 @@
 const express = require('express');
 const axios = require('axios');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
 
-const WEBFLOW_CLIENT_ID = 'your-webflow-client-id';
-const WEBFLOW_CLIENT_SECRET = 'your-webflow-client-secret';
-const GITHUB_CLIENT_ID = 'your-github-client-id';
-const GITHUB_CLIENT_SECRET = 'your-github-client-secret';
+// Read secrets from file
+const secrets = JSON.parse(fs.readFileSync(path.join(__dirname, 'secrets.json'), 'utf8'));
 
-const REDIRECT_URI = 'http://localhost:3000/callback';
+const WEBFLOW_CLIENT_ID = secrets.WEBFLOW_CLIENT_ID;
+const WEBFLOW_CLIENT_SECRET = secrets.WEBFLOW_CLIENT_SECRET;
+const GITHUB_CLIENT_ID = secrets.GITHUB_CLIENT_ID;
+const GITHUB_CLIENT_SECRET = secrets.GITHUB_CLIENT_SECRET;
+
+const REDIRECT_URI = 'https://your-service.onrender.com/callback';
 
 // Step 1: Redirect user to Webflow for authorization
 app.get('/auth/webflow', (req, res) => {
