@@ -1,1 +1,1 @@
-Initially mde this repository to make an extension for webflow to import exported code from genreated site to gihub repository , on FREE tier , but since free teir  export is no longer supported , this sextension has no use 🥲, or untill i can get a webflow paid account.😝
+Initially mde this repository to make an extension for webflow to import exported code from genreated site to gihub repository , on FREE tier , but since free teir  export is no longer supported , this extension has no use 🥲, or untill i can get a webflow paid account.😝
